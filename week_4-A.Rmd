@@ -78,7 +78,7 @@ read_enrollment <- function(file, skip) {
   filter(u_grad > 10)
   }
 
-d_2019_take_2 <-
+d_2019 <-
   read_enrollment("raw_data/class_enrollment_summary_by_term_12.20.19.xlsx",
                   skip = 3)
 
@@ -89,12 +89,6 @@ d_2018 <-
 d_2017 <-
   read_enrollment("raw_data/class_enrollment_summary_by_term_10.20.17.xlsx",
                   skip = 2)
-
-example_2017 <- read_excel(
-  "raw_data/class_enrollment_summary_by_term_10.20.17.xlsx"
-)
-
-view(example_2017)
 
 d_2016 <-
   read_enrollment("raw_data/class_enrollment_summary_by_term_fall_2016.xlsx",
@@ -114,7 +108,10 @@ d_2015 <-
 
 ```{r}
 
-
+x <- bind_rows(list(d_2015, d_2016, d_2017, d_2018, d_2019, by = "year")
+               
+               
+                 mutate(year = as.numeric(year) + 2014)
 
 ```
 
